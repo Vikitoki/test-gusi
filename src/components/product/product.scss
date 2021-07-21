@@ -1,14 +1,28 @@
+@import "../../styles/default/variables.scss";
+
 .product {
   display: flex;
-  flex-flow: row nowrap;
+  align-items: center;
   width: 100%;
   padding: 16px;
+
   border: 1px solid black;
-  border-radius: 4px;
+  background: none;
+
   box-shadow: 0px 3px rgba($color: #000000, $alpha: 0.1);
+  border-radius: 25px;
+
+  transition: all 0.3s ease;
+
+  @media (min-width: $md2 + px) {
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 
   &-info {
     width: 100%;
+    padding-right: 30px;
 
     &-title {
       margin-bottom: 12px;
@@ -27,8 +41,21 @@
   }
 
   &-image-frame {
-    width: 320px;
-    height: 100%;
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
+
+    border-radius: 50%;
+    border: 1px solid #000;
+
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
   }
 
   &-image {

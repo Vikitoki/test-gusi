@@ -1,3 +1,5 @@
+@import "../../../styles/default/variables.scss";
+
 .modal-product {
   display: flex;
   align-items: center;
@@ -11,6 +13,16 @@
   top: 0;
   left: 0;
   z-index: 100;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: all 0.3s ease;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
 
   &__container {
     display: block;
@@ -30,7 +42,31 @@
 
   background-color: #fff;
   border-radius: 25px;
-  padding: 25px;
+  padding: 60px 25px 25px;
+
+  position: relative;
+
+  &__close {
+    display: block;
+
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    z-index: 1;
+
+    background: none;
+    border: none;
+
+    @media (min-width: $md2 + px) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 
   &__btns {
     display: block;
