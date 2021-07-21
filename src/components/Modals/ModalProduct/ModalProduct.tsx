@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { closeProductModal } from "../../../state/redux/products/action-creators";
+import { closeProductModal } from "../../../store/products/action-creators";
 
 import "./ModalProduct.scss";
 

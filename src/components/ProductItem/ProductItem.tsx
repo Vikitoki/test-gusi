@@ -1,17 +1,17 @@
 import React, { FC } from "react";
 import { useDispatch } from "react-redux";
-import { openProductModal } from "../../state/redux/products/action-creators";
+import { openProductModal } from "../../store/products/action-creators";
 import { IActiveProductItem } from "../../types/productsTypes";
-import "./product.scss";
+
+import "./ProductItem.scss";
 
 interface ProductProps {
   product: IActiveProductItem;
 }
 
-export const Product: FC<ProductProps> = ({ product }) => {
+export const ProductItem: FC<ProductProps> = ({ product }) => {
   // Variables
   const dispatch = useDispatch();
-
 
   const price = product.price!.toLocaleString("ru", {
     maximumFractionDigits: 2,

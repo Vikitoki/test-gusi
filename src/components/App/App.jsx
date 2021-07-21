@@ -1,19 +1,24 @@
 import React from "react";
-import "../../state/stores/ProductsStore";
+import { Provider } from "react-redux";
+import { store } from "../../store/store";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { HomePage } from "../../pages/HomePage/HomePage";
 
 import "../../styles/default/style.scss";
-
-import ProductList from "../productList";
-import { Provider } from "react-redux";
-import { store } from "../../state/redux/store";
 
 export class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <main className="main">
-          <ProductList />
-        </main>
+        <BrowserRouter>
+          <div className="wrapper">
+            <main className="main">
+              <Switch>
+                <Route path="/" exact component={HomePage}></Route>
+              </Switch>
+            </main>
+          </div>
+        </BrowserRouter>
       </Provider>
     );
   }

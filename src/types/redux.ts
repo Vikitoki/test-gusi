@@ -1,3 +1,3 @@
-import { rootReducer } from "../state/redux/rootReducer";
+import { rootReducer } from "../store/rootReducer";
 
 export type RootState = ReturnType<typeof rootReducer>;

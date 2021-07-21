@@ -1,7 +1,10 @@
 import {
   CLOSE_PRODUCT_MODAL,
+  FETCH_PRODUCT_LIST_FAILURE,
+  FETCH_PRODUCT_LIST_REQUEST,
+  FETCH_PRODUCT_LIST_SUCCESS,
   OPEN_PRODUCT_MODAL,
-} from "../state/redux/products/action-variables";
+} from "../store/products/action-variables";
 
 export interface IActiveProductItem {
   id: number | null;
@@ -13,6 +16,9 @@ export interface IActiveProductItem {
 export interface ProductsState {
   modalProductWindowStatus: boolean;
   activeProductItem: IActiveProductItem;
+  productItemsList: IActiveProductItem[];
+  loading: boolean;
+  error: string;
 }
 
 interface OpenProductModalAction {
@@ -24,4 +30,23 @@ interface CloseProductModalAction {
   type: typeof CLOSE_PRODUCT_MODAL;
 }
 
-export type ProductsActions = OpenProductModalAction | CloseProductModalAction;
+interface FetchProductListRequestAction {
+  type: typeof FETCH_PRODUCT_LIST_REQUEST;
+}
+
+interface FetchProductListSuccessAction {
+  type: typeof FETCH_PRODUCT_LIST_SUCCESS;
+  payload: IActiveProductItem[];
+}
+
+interface FetchProductListFailureAction {
+  type: typeof FETCH_PRODUCT_LIST_FAILURE;
+  payload: string;
+}
+
+export type ProductsActions =
+  | OpenProductModalAction
+  | CloseProductModalAction
+  | FetchProductListRequestAction
+  | FetchProductListSuccessAction
+  | FetchProductListFailureAction;
