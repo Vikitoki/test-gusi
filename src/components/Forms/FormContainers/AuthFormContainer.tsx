@@ -1,14 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Formik } from "formik";
 import { FormControl } from "../UI/FormControl";
 import * as Yup from "yup";
+import { FC } from "react";
+import { AuthFormContainerState } from "../../../types/formTypes";
+import { useDispatch } from "react-redux";
+import { registrationNewUser } from "../../../services/rest/authActions";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { useHistory } from "react-router-dom";
 
-export const AuthFormContainer = () => {
+export const AuthFormContainer: FC = () => {
   // Variables
-  const initialValues = {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const initialValues: AuthFormContainerState = {
     userEmail: "",
     userPassword: "",
   };
+  const { error, loading, currentUser } = useTypedSelector(
+    (state) => state.user
+  );
+
+  // Effects
+  useEffect(() => {
+    if (currentUser.id) {
+      history.push("/");
+    }
+  }, [currentUser.id, history]);
 
   const validationSchema = Yup.object({
     userEmail: Yup.string()
@@ -21,7 +39,9 @@ export const AuthFormContainer = () => {
 
   // Handlers
 
-  const onSubmit = (values: any) => {};
+  const onSubmit = (values: AuthFormContainerState) => {
+    dispatch(registrationNewUser(values));
+  };
 
   return (
     <Formik
@@ -51,6 +71,14 @@ export const AuthFormContainer = () => {
                 Зарегистрироваться
               </button>
             </div>
+
+            {loading ? (
+              <span className="form__status">
+                Подождите идёт отправка данных...
+              </span>
+            ) : error ? (
+              <span className="form__status">{error}</span>
+            ) : null}
           </Form>
         );
       }}

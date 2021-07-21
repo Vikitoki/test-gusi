@@ -29,6 +29,8 @@
     color: green;
     line-height: 32px;
 
+    background: none;
+
     @media (min-width: $md2 + px) {
       &:hover {
         text-decoration: underline;
