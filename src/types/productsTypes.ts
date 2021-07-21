@@ -10,7 +10,7 @@ export interface IActiveProductItem {
   id: number | null;
   title: string;
   description: string;
-  price: number | null;
+  price: string;
 }
 
 export interface ProductsState {

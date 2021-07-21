@@ -3,8 +3,6 @@ import { useDispatch } from "react-redux";
 import { openProductModal } from "../../store/products/action-creators";
 import { IActiveProductItem } from "../../types/productsTypes";
 
-import "./ProductItem.scss";
-
 interface ProductProps {
   product: IActiveProductItem;
 }
@@ -12,13 +10,6 @@ interface ProductProps {
 export const ProductItem: FC<ProductProps> = ({ product }) => {
   // Variables
   const dispatch = useDispatch();
-
-  const price = product.price!.toLocaleString("ru", {
-    maximumFractionDigits: 2,
-    minimumFractionDigits: 2,
-    currency: "RUB",
-    style: "currency",
-  });
 
   // Handlers
 
@@ -34,7 +25,7 @@ export const ProductItem: FC<ProductProps> = ({ product }) => {
         </p>
         <p className="product-info-description">{product.description}</p>
         <div>
-          <span className="product-info-price">{price}</span>
+          <span className="product-info-price">{product.price}</span>
         </div>
       </div>
       <div className="product-image-frame">

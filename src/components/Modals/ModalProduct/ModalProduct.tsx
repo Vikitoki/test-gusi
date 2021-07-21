@@ -1,21 +1,30 @@
 import React, { FC } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { addProductItemToCart } from "../../../store/cart/action-creators";
 import { closeProductModal } from "../../../store/products/action-creators";
 
 import "./ModalProduct.scss";
 
-export const ModalProduct: FC = () => {
+export const ModalProduct: FC = (props) => {
   // Variables
   const { activeProductItem, modalProductWindowStatus } = useTypedSelector(
     (state) => state.products
   );
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // Handlers
 
   const closeButtonHandler = () => {
     dispatch(closeProductModal());
+  };
+
+  const addToCartButtonHandler = () => {
+    dispatch(addProductItemToCart(activeProductItem));
+    dispatch(closeProductModal());
+    history.push("/cart");
   };
 
   return (
@@ -54,7 +63,11 @@ export const ModalProduct: FC = () => {
                 </div>
               </div>
               <div className="content-modal-product__btns">
-                <button type="button" className="btn btn_black-outline">
+                <button
+                  onClick={addToCartButtonHandler}
+                  type="button"
+                  className="btn btn_black-outline"
+                >
                   Добавить в корзину
                 </button>
               </div>

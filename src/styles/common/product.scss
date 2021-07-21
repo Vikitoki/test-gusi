@@ -1,8 +1,7 @@
-@import "../../styles/default/variables.scss";
+@import "../default/variables.scss";
 
 .product {
-  display: flex;
-  align-items: center;
+  display: block;
   width: 100%;
   padding: 16px;
 
@@ -18,6 +17,19 @@
     &:hover {
       transform: scale(1.1);
     }
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 35px;
+  }
+
+  &-delete {
+    display: block;
+    width: 100%;
+
+    text-align: center;
   }
 
   &-info {

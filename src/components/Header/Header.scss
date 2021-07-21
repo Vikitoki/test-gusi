@@ -1,0 +1,38 @@
+@import "../../styles/default/variables.scss";
+
+.header {
+  display: block;
+  width: 100%;
+  padding: 15px 0px;
+
+  background-color: lightblue;
+  border-radius: 0px 0px 25px 25px;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    li {
+      display: block;
+      margin-right: 35px;
+
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+  }
+
+  &__link {
+    font-size: 22px;
+    font-weight: 400;
+    color: green;
+    line-height: 32px;
+
+    @media (min-width: $md2 + px) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

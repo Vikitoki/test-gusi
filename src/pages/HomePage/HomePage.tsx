@@ -16,21 +16,25 @@ export const HomePage: FC = () => {
   );
 
   useEffect(() => {
-    dispatch(getProductsList());
-  }, [dispatch]);
+    if (productItemsList.length === 0) {
+      dispatch(getProductsList());
+    }
+  }, [dispatch, productItemsList.length]);
 
   return (
     <div className="home-page">
-      {loading ? (
-        <span className="status-text">Загрузка данных...</span>
-      ) : error ? (
-        <span>{error}</span>
-      ) : (
-        <>
-          <ProductList products={productItemsList} />
-          <ModalProduct />
-        </>
-      )}
+      <div className="home-page__container container">
+        {loading ? (
+          <span className="status-text">Загрузка данных...</span>
+        ) : error ? (
+          <span>{error}</span>
+        ) : (
+          <>
+            <ProductList products={productItemsList} />
+            <ModalProduct />
+          </>
+        )}
+      </div>
     </div>
   );
 };

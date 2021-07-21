@@ -14,7 +14,7 @@ const initialState: ProductsState = {
   error: "",
   activeProductItem: {
     title: "",
-    price: null,
+    price: "",
     id: null,
     description: "",
   },
