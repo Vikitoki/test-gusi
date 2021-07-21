@@ -7,6 +7,7 @@ import { HomePage } from "../../pages/HomePage/HomePage";
 import "../../styles/default/style.scss";
 import { Header } from "../Header/Header";
 import { CartPage } from "../../pages/CartPage/CartPage";
+import { AuthPage } from "../../pages/AuthPage/AuthPage";
 
 export const App = () => {
   return (
@@ -18,6 +19,7 @@ export const App = () => {
             <Switch>
               <Route path="/" exact component={HomePage}></Route>
               <Route path="/cart" exact component={CartPage}></Route>
+              <Route path="/auth" exact component={AuthPage}></Route>
             </Switch>
           </main>
         </div>
